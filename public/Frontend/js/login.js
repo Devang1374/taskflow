@@ -71,8 +71,8 @@ async function submitAuth(event) {
   }
 
   const url = isSignup
-    ? "http://localhost:5000/api/auth/signup"
-    : "http://localhost:5000/api/auth/login";
+    ? "https://taskflow-l9ko.onrender.com/api/auth/signup"
+    : "https://taskflow-l9ko.onrender.com/api/auth/login";
 
   const body = isSignup
     ? { name, email, password }
@@ -236,7 +236,7 @@ let currentUserId = null;
 async function verifyOTP() {
   const otp = document.getElementById("otpInput").value;
 
-  const res = await fetch("http://localhost:5000/api/auth/verify-otp", {
+  const res = await fetch("https://taskflow-l9ko.onrender.com/api/auth/verify-otp", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
