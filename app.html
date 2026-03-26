@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Task Manager</title>
+  <link rel="stylesheet" href="/Frontend/css/style.css">
+  <link rel="stylesheet" href="/Frontend/css/loginPage.css">
+  <link rel="stylesheet" href="/Frontend/css/animation.css">
+</head>
+
+<body>
+
+  <div id="otpSection" class="otpSection" style="display: none;">
+    <input type="text" id="otpInput" placeholder="Enter OTP">
+    <button onclick="verifyOTP()">Verify Email</button>
+  </div>
+
+  <!-- AUTH PAGE -->
+<div id="authPage" class="auth-container">
+
+  <h2 id="authTitle">Login</h2>
+
+  <input id="authName" placeholder="Name" style="display:none" required/>
+  <input id="authEmail" placeholder="Email" required/>
+  <div id="emailError" style="display:none; color:red; font-size:14px; margin-top:5px;"></div>
+  <input id="authPassword" type="password" placeholder="Password" required/>
+  <div id="passwordStrength" style="display:none; margin-top:5px; font-size:14px;"></div>
+  <input type="password" id="confirmPassword" placeholder="Confirm Password" style="display: none;" required/>
+  
+  <p id="passwordError" style="color:red; font-size:14px;"></p>
+
+  <div id="divBtn" onclick="submitAuth(event)">
+    <div id="boxItem">
+      <button type="button">Submit</button>
+    </div>
+  </div>
+
+  <p id="toggleAuth" onclick="toggleAuthMode()">
+    Don't have account? Signup
+  </p>
+
+</div>
+
+<div class="main-container">
+<div class="container">
+  <aside class="sidebar">
+    <h2 id="logoA" class="logo">StudyFlow</h2>
+
+    <ul class="menu">
+        <li id="DashboardA" class="active" data-page="dashboardPage">Dashboard</li>
+        <li id="tasksPageA" data-page="tasksPage">My Tasks</li>
+        <li id="subjectsPageA" data-page="subjectsPage">Subjects</li>
+        <li id="examsPageA" data-page="examsPage">Exams</li>
+        <li id="timerPageA" data-page="timerPage">Study Timer</li>
+    </ul>
+  </aside>
+
+  
+  <main class="main">
+
+    <header class="navbar">
+        <div></div>
+        <div class="nav-right">
+          <button id="themeToggle" class="FadeA">🌙</button>
+          <div class="profile-container">
+  <div class="profile FadeA" id="profileIcon">👤</div>
+
+  <div class="profile-menu" id="profileMenu">
+    <p id="userName" class="userName">Devang</p>
+    <button onclick="logout()">Logout</button>
+  </div>
+</div>
+        </div>
+    </header>
+
+<section class="content">
+
+  <div id="dashboardPage" class="page active-page">
+  <h1>Dashboard</h1>
+
+  <div class="stats">
+
+    <div class="stat-card">
+      <h3>Total Tasks</h3>
+      <p id="totalTasks">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Completed Tasks</h3>
+      <p id="completedTasks">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Pending Tasks</h3>
+      <p id="pendingTasks">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Total Subjects</h3>
+      <p id="totalSubjects">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Upcoming Exams</h3>
+      <p id="upcomingExams">0</p>
+    </div>
+
+  </div>
+</div>
+
+
+  <div id="tasksPage" class="page">
+    <input type="text" id="taskSearch" placeholder="Search tasks..." class="search">
+       <select id="subjectFilter" class="search-bar">
+            <option value="">All Subjects</option>
+        </select>
+    <h1>My Tasks</h1>
+
+    <button class="add-btn">+ Add Task</button>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+
+      <div class="modal-content">
+
+        <span class="close-btn">&times;</span>
+
+        <h2>Add New Task</h2>
+
+    <form class="task-form" id="taskForm">
+
+    <input type="text" id="taskTitle" placeholder="Task title" required>
+
+    <select id="taskSubject">
+        <option value="Programming">Programming</option>
+        <option value="Math">Math</option>
+        <option value="Marketing">Marketing</option>
+        <option value="">No Subject</option>
+    </select>
+
+    <input type="date" id="taskDate">
+
+    <select id="taskPriority">
+        <option>High</option>
+        <option>Medium</option>
+        <option>Low</option>
+    </select>
+
+        <button type="submit" class="save-btn">Save Task</button>
+
+    </form>
+
+      </div>
+
+    </div>
+
+    <div class="tasks" id="taskList"></div>
+  </div>
+
+
+  <div id="subjectsPage" class="page">
+    <h1>Subjects</h1>
+
+    <button id="addSubjectBtn" class="add-btn">+ Add Subject</button>
+
+    <div id="subjectList" class="subjects"></div>
+
+    <!-- Subject Modal -->
+        <div class="modal" id="subjectModal">
+            <div class="modal-content">
+                <span class="close-subject">&times;</span>
+
+                <h2>Add Subject</h2>
+
+                <form class="subject-form" id="subjectForm">
+                    <input type="text" id="subjectName" placeholder="Subject name" required>
+                    <input type="text" id="subjectTeacher" placeholder="Teacher name">
+
+                    <button type="submit" class="save-btn">Save Subject</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
+  <div id="examsPage" class="page">
+  <h1>Exams</h1>
+
+  <button id="addExamBtn" class="add-btn">+ Add Exam</button>
+
+  <div id="examList" class="exams"></div>
+
+  <!-- Exam Modal -->
+  <div class="modal" id="examModal">
+    <div class="modal-content">
+      <span class="close-exam">&times;</span>
+
+      <h2>Add Exam</h2>
+
+      <form class="exam-form" id="examForm">
+        <input type="text" id="examName" placeholder="Exam name" required>
+        <input type="date" id="examDate" required>
+
+        <button type="submit" class="save-btn">Save Exam</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<div id="timerPage" class="page">
+  <h1>Study Timer</h1>
+
+  <div class="timer-container">
+    <h2 id="timerDisplay">25:00</h2>
+
+    <div class="timer-buttons">
+      <button id="startTimer">Start</button>
+      <button id="pauseTimer">Pause</button>
+      <button id="resetTimer">Reset</button>
+    </div>
+  </div>
+</div>
+
+</section>
+
+  </main>
+
+</div>
+</div>
+<script src="/Frontend/js/script.js"></script>
+<script src="/Frontend/js/timer.js"></script>
+<script src="/Frontend/js/notification.js"></script>
+<script src="/Frontend/js/login.js"></script>
+</body>
+</html>

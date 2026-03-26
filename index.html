@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>TaskFlow — Student Task Manager</title>
+  <link rel="stylesheet" href="/Frontend/css/landingPage.css" />
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="landing-nav">
+    <h2>TaskFlow</h2>
+
+    <div>
+      <button onclick="goToLogin()">Login</button>
+      <button onclick="goToLogin()" class="signup-btn">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <h1>Organize Your Study Life Smarter</h1>
+    <p>
+      Manage tasks, track exams, stay focused with timer and smart planning.
+    </p>
+
+    <button class="cta-btn" onclick="goToLogin()">
+      Start Free
+    </button>
+  </section>
+
+  <!-- preview -->
+  <section class="app-preview">
+    <h2>See TaskFlow in Action</h2>
+
+    <div class="preview-container">
+
+      <!-- SLIDER -->
+      <div class="slider">
+        <img src="/Frontend/assets/images/Dashboard.png" class="slide active">
+        <img src="/Frontend/assets/images/Dashboar-light.png" class="slide">
+        <img src="/Frontend/assets/images/Dashboard.png" class="slide">
+        <img src="/Frontend/assets/images/Dashboar-light.png" class="slide">
+      </div>
+
+      <div class="sliderTow">
+        <img src="/Frontend/assets/images/Task.png" class="slideTow active">
+        <img src="/Frontend/assets/images/Task-light.png" class="slideTow">
+        <img src="/Frontend/assets/images/Task.png" class="slideTow">
+        <img src="/Frontend/assets/images/Task-light.png" class="slideTow">
+      </div>
+
+    </div>
+  </section>
+  
+
+  <!-- FEATURES -->
+  <section class="features">
+
+    <div class="feature-card">
+      <h3>📚 Subject Management</h3>
+      <p>Organize tasks by subjects and track progress.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>⏱ Pomodoro Timer</h3>
+      <p>Stay focused with built-in study timer.</p>
+    </div>
+
+    <div class="feature-card">
+      <h3>📊 Smart Dashboard</h3>
+      <p>Visualize productivity and performance.</p>
+    </div>
+
+  </section>
+
+  <footer class="footer">
+    <p>© 2026 TaskFlow — Student Task Manager</p>
+  </footer>
+
+<script>
+    function goToLogin() {
+      window.location.href = "app.html";
+    }
+
+  const slides = document.querySelectorAll(".slide");
+  const slidesTow = document.querySelectorAll(".slideTow");
+
+  let current = 0;
+
+  function changeSlide() {
+    slides[current].classList.remove("active");
+    slidesTow[current].classList.remove("active");
+
+
+    current = (current + 1) % slides.length;
+
+    slides[current].classList.add("active");
+    slidesTow[current].classList.add("active");
+  }
+
+  // change every 3 seconds
+  setInterval(changeSlide, 3000);
+</script>
+
+</body>
+</html>

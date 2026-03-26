@@ -1,0 +1,71 @@
+#DashboardA{
+    border:1px solid  lightgray;
+    animation: fadeIn 1s ease;
+}
+
+#tasksPageA{
+    border:1px solid  lightgray;
+    animation: fadeIn 1.5s ease;
+}
+
+#subjectsPageA{
+    border:1px solid  lightgray;
+    animation: fadeIn 2s ease;
+}
+
+#examsPageA{
+    border:1px solid  lightgray;
+    animation: fadeIn 2.5s ease;
+}
+
+#timerPageA{
+    border:1px solid  lightgray;
+    animation: fadeIn 3s ease;
+}
+
+@keyframes fadeIn {
+    0%{
+        transform: translateX(-150px);
+    }100%{
+        transform: translateX(0);
+    }
+}
+
+#logoA{
+    animation: fadeDown 1s ease;
+}
+
+.FadeA{
+    animation: fadeDown 2s ease;
+}
+
+@keyframes fadeDown {
+    0%{
+        transform: translateY(-150px);
+    }100%{
+        transform: translateY(0);
+    }
+}
+
+#dashboardPage{
+    animation: fadeUp 3s ease;
+}
+
+#tasksPage, #subjectsPage,
+#examsPage, #timerPage{
+    animation: fadeUp 2s ease;
+}
+
+@keyframes fadeUp {
+    0%{
+        opacity: 0;
+    }100%{
+        opacity: 1;
+    }
+}
+
+ @keyframes animationG {
+    to{
+        background-position: 200%;
+    }
+}
