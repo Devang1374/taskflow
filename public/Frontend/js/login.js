@@ -71,8 +71,8 @@ async function submitAuth(event) {
   }
 
   const url = isSignup
-    ? "http://localhost:5000/api/auth/signup"
-    : "http://localhost:5000/api/auth/login";
+    ? "https://taskflow-cjel.onrender.com/api/auth/signup"
+    : "https://taskflow-cjel.onrender.com/api/auth/login";
 
   const body = isSignup
     ? { name, email, password }
