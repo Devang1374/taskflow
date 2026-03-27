@@ -1,0 +1,2 @@
+mongodb+srv://vagheladevang123_db_user:3rLa8HcASq57prU8@mycluster.j1hheq2.mongodb.net/?appName=MyCluster
+MONGO_URI=mongodb+srv://vagheladevang123_db_user:3rLa8HcASq57prU8@mycluster.j1hheq2.mongodb.net/taskflow?retryWrites=true&w=majority
